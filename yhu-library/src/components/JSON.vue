@@ -112,6 +112,16 @@
     <section class="lab-section">
       <h2>Attribute, Class and Style Binding with <code>v-bind</code></h2>
       <p>Highlighting Specific Authors:</p>
+      <ul>
+        <li v-for="author in authors" :key="author.id">
+          <div v-if="author.name=='George Orwell'">
+            <p v-bind:style="{color:textColor, fontSize: fontSize + 'px', backgroundColor:backgroundColor}">{{author.name}}</p>
+          </div>
+          <div v-else>
+            <p>{{author.name}}</p>
+          </div>
+        </li>
+      </ul>
 
     </section>
   </div>
@@ -158,6 +168,10 @@ const weekends = {
   Saturday: bookstores.openingHours.weekends,
   Sunday: bookstores.openingHours.weekends,
 };
+
+const textColor = ref('blue')
+const fontSize = ref(18)
+const backgroundColor = ref('green')
 </script>
 
 <style scoped>
@@ -220,4 +234,6 @@ li {
   margin: 5px 0;
   border-radius: 5px;
 }
+
+
 </style>
