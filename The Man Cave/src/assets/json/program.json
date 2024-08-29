@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "programName": "Example Program 1",
+    "programDescription": "Example Description",
+    "reviews": [
+      {
+        "rating": 4,
+        "comment": "Example Comment 1"
+      },
+      {
+        "rating": 2,
+        "comment": "Example Comment 2"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "programName": "Example Program 2",
+    "programDescription": "Example Description",
+    "reviews": [
+      {
+        "rating": 5,
+        "comment": "Example Comment 1"
+      },
+      {
+        "rating": 3,
+        "comment": "Example Comment 2"
+      }
+    ]
+  }
+]

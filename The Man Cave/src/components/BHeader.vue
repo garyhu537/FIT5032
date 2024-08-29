@@ -10,7 +10,9 @@
           >
         </li>
         <li class="nav-item">
-          <router-link to="/about" class="nav-link" active-class="active">About</router-link>
+          <router-link to="/Dashboard" class="nav-link" active-class="active"
+            >Dashboard</router-link
+          >
         </li>
         <li class="nav-item">
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>

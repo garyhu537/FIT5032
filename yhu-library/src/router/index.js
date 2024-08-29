@@ -11,22 +11,27 @@ const routes = [
     component: HomeView
   },
   {
-    path: "/About",
-    name: "About",
+    path: '/About',
+    name: 'About',
     component: AboutView,
     beforeEnter: (to, from, next) => {
-      const isAuthenticated = localStorage.getItem("isAuthenticated");
-      if (isAuthenticated === "true") {
-        next();
+      const isAuthenticated = localStorage.getItem('isAuthenticated')
+      if (isAuthenticated === 'true') {
+        next()
       } else {
-        next("/login");
+        next('/AccessDenied')
       }
-    },
+    }
   },
   {
-    path: '/login',
+    path: '/Login',
     name: 'Login',
     component: LoginView
+  },
+  {
+    path: '/AccessDenied',
+    name: 'AccessDenied',
+    component: AccessDeniedView
   }
 ]
 

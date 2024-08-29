@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "email": "admin@example.com",
+    "password": "Abc12345.",
+    "fullname": "John Davis",
+    "contactNumber": "0412 123 123",
+    "institution": "NA",
+    "type": "Admin"
+  },
+  {
+    "id": 2,
+    "email": "user@example.com",
+    "password": "Abc12345.",
+    "fullname": "Trent Ng",
+    "contactNumber": "0412 123 123",
+    "institution": "Mount Waverley High School",
+    "type": "User"
+  },
+  {
+    "id": 3,
+    "email": "user2@example.com",
+    "password": "Abc12345.",
+    "fullname": "Gavin Yee",
+    "contactNumber": "0412 123 123",
+    "institution": "Individual",
+    "type": "User"
+  }
+]
