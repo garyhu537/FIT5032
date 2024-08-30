@@ -201,7 +201,7 @@ const validateConfirmPassword = (blur) => {
 }
 
 /* ID selectors */
-#username:focus,
+#email:focus,
 #password:focus,
 #isAustralian:focus,
 .card {

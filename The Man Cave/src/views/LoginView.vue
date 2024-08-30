@@ -1,6 +1,6 @@
 <template>
   <div class="login container">
-    <h2>Login</h2>
+    <h2 class="text-center">Login</h2>
     <form @submit.prevent="handleLogin">
       <div class="row">
         <div class="col sm-6">
@@ -15,12 +15,12 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col">
+      <div class="row submission">
+        <div class="col-md-6">
           <button type="submit" class="btn btn-primary">Login</button>
         </div>
 
-        <div class="col">
+        <div class="col-md-6">
           <router-link to="/Registration" class="nav-link" active-class="active">
             Register here
           </router-link>
@@ -31,33 +31,48 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import user from '@/assets/json/user.json'
 
-export default {
-  setup() {
-    const router = useRouter()
-    const email = ref('')
-    const password = ref('')
-    const errorMessage = ref('')
+const router = useRouter()
+const email = ref('')
+const password = ref('')
+const errorMessage = ref('')
 
-    const handleLogin = () => {
-      const loginUser = computed(() => {
-        return user.find((user) => user.email === email.value)
-      })
+const handleLogin = () => {
+  const loginUser = computed(() => {
+    return user.find((user) => user.email === email.value)
+  })
 
-      if (email.value === loginUser.value.email && password.value === loginUser.value.password) {
-        localStorage.setItem('isAuthenticated', 'true')
-        localStorage.setItem('userType', loginUser.value.type)
-        router.push('/Dashboard')
-      } else {
-        errorMessage.value = 'Invalid email or password'
-      }
-    }
-
-    return { email, password, errorMessage, handleLogin }
+  if (email.value === loginUser.value.email && password.value === loginUser.value.password) {
+    localStorage.setItem('isAuthenticated', 'true')
+    localStorage.setItem('userType', loginUser.value.type)
+    router.push('/Dashboard')
+  } else {
+    errorMessage.value = 'Invalid email or password'
   }
 }
 </script>
+
+<style scoped>
+.container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 30%;
+  margin: 0 auto;
+  padding: 20px;
+  /* background-color: #e0bfbf; */
+  border-radius: 10px;
+}
+
+/* Class selectors */
+.form {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.submission{
+  margin-top: 10px;
+}
+</style>
