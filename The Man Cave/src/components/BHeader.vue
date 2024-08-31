@@ -6,7 +6,7 @@
       <ul class="nav nav-pills">
         <li class="nav-item">
           <router-link to="/" class="nav-link" active-class="active" aria-current="page"
-            >Home (Week 5)</router-link
+            >Home</router-link
           >
         </li>
         <li class="nav-item">
@@ -37,7 +37,8 @@ import { useRouter } from 'vue-router'
 const isAuthenticated = ref(localStorage.getItem('isAuthenticated'))
 
 const checkAuthentication = computed(() => {
-  return isAuthenticated.value == 'true'
+  const authenticated = ref(localStorage.getItem('isAuthenticated'))
+  return authenticated.value == 'true'
 })
 
 const router = useRouter()

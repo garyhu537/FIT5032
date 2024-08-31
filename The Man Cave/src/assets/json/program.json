@@ -24,8 +24,12 @@
         "comment": "Example Comment 1"
       },
       {
-        "rating": 3,
+        "rating": 4,
         "comment": "Example Comment 2"
+      },
+      {
+        "rating": 4,
+        "comment": "Example Comment 3"
       }
     ]
   }
