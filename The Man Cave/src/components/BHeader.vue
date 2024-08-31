@@ -15,9 +15,12 @@
           >
         </li>
         <li class="nav-item">
+          <router-link to="/Program" class="nav-link" active-class="active">Program</router-link>
+        </li>
+        <li class="nav-item" v-if="checkAuthentication == false">
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
         </li>
-        <li class="nav-item" v-if="isAuthenticated">
+        <li class="nav-item" v-else>
           <router-link to="/login" class="nav-link" active-class="active" @click="logout"
             >Logout</router-link
           >
@@ -27,23 +30,22 @@
   </div>
 </template>
 
-<script>
-import { ref } from 'vue'
+<script setup>
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 
-export default {
-  setup() {
-    const isAuthenticated = ref(localStorage.getItem('isAuthenticated'))
-    const router = useRouter()
+const isAuthenticated = ref(localStorage.getItem('isAuthenticated'))
 
-    const logout = () => {
-      localStorage.removeItem('isAuthenticated')
-      isAuthenticated.value = false
-      router.push('/login')
-    }
+const checkAuthentication = computed(() => {
+  return isAuthenticated.value == 'true'
+})
 
-    return { isAuthenticated, logout }
-  }
+const router = useRouter()
+
+const logout = () => {
+  localStorage.removeItem('isAuthenticated')
+  isAuthenticated.value = false
+  router.push('/login')
 }
 </script>
 

@@ -7,6 +7,8 @@ import RegistrationView from '@/views/RegistrationView.vue'
 import UserDashboardView from '@/views/UserDashboardView.vue'
 import AdminDashboardView from '@/views/AdminDashboardView.vue'
 import DashboardView from '@/views/DashboardView.vue'
+import EnrolledProgramView from '@/views/ProgramView.vue'
+import ProgramView from '@/views/ProgramView.vue'
 
 const routes = [
   {
@@ -43,9 +45,34 @@ const routes = [
     component: AccessDeniedView
   },
   {
+    path: '/Dashboard',
+    name: 'Dashboard',
+    component: DashboardView,
+    beforeEnter: (to, from, next) => {
+      const isAuthenticated = localStorage.getItem('isAuthenticated')
+      const userType = localStorage.getItem('userType')
+      if (isAuthenticated === 'true' && userType === 'Admin') {
+        next('/AdminDashboard')
+      } else if (isAuthenticated === 'true' && userType === 'User') {
+        next('/UserDashboard')
+      } else {
+        next('/AccessDenied')
+      }
+    }
+  },
+  {
     path: '/UserDashboard',
     name: 'UserDashboard',
-    component: UserDashboardView
+    component: UserDashboardView,
+    beforeEnter: (to, from, next) => {
+      const isAuthenticated = localStorage.getItem('isAuthenticated')
+      const userType = localStorage.getItem('userType')
+      if (isAuthenticated === 'true' && userType === 'User') {
+        next()
+      } else {
+        next('/AccessDenied')
+      }
+    }
   },
   {
     path: '/AdminDashboard',
@@ -62,20 +89,9 @@ const routes = [
     }
   },
   {
-    path: '/Dashboard',
-    name: 'Dashboard',
-    component: DashboardView,
-    beforeEnter: (to, from, next) => {
-      const isAuthenticated = localStorage.getItem('isAuthenticated')
-      const userType = localStorage.getItem('userType')
-      if (isAuthenticated === 'true' && userType === 'Admin') {
-        next('/AdminDashboard')
-      } else if (isAuthenticated === 'true' && userType === 'User') {
-        next('/UserDashboard')
-      } else {
-        next('/AccessDenied')
-      }
-    }
+    path: '/Program',
+    name: 'Program',
+    component: ProgramView
   }
 ]
 
