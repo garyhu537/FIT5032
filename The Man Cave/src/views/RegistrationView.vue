@@ -11,6 +11,7 @@ const formData = ref({
 })
 
 const submitForm = () => {
+  //Attempted to use FS to write to local storage, but chrome doesn't support FS on frontend
   validateEmail(true)
   validatePassword(true)
   if (!errors.value.email && !errors.value.password) {

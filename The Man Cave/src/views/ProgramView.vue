@@ -16,7 +16,7 @@
               <ul>
                 <li v-for="review in program.reviews" :key="review.id" class="p-2 border-bottom">
                   <strong>Rated: {{ review.rating }}</strong>
-                  <p> {{ review.comment }}</p>
+                  <p> {{ sanitizeContent(review.comment) }}</p>
                 </li>
               </ul>
             </div>
@@ -31,6 +31,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import program from '@/assets/json/program.json'
+import DOMPurify from 'dompurify';
 
 const programs = computed(() => {
   return program
@@ -57,5 +58,7 @@ const programsWithAverageRating = computed(() => {
   })
 })
 
-console.log(programsWithAverageRating.value)
+function sanitizeContent(content) {
+    return DOMPurify.sanitize(content);
+}
 </script>

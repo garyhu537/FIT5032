@@ -6,11 +6,15 @@
     "reviews": [
       {
         "rating": 4,
-        "comment": "Example Comment 1"
+        "comment": "<script>alert('hi')</script>"
       },
       {
         "rating": 2,
         "comment": "Example Comment 2"
+      },
+      {
+        "rating": 5,
+        "comment": "<a :href='https://www.google.com'>click me</a>"
       }
     ]
   },

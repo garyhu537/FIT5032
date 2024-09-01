@@ -7,7 +7,6 @@ import RegistrationView from '@/views/RegistrationView.vue'
 import UserDashboardView from '@/views/UserDashboardView.vue'
 import AdminDashboardView from '@/views/AdminDashboardView.vue'
 import DashboardView from '@/views/DashboardView.vue'
-import EnrolledProgramView from '@/views/ProgramView.vue'
 import ProgramView from '@/views/ProgramView.vue'
 
 const routes = [
