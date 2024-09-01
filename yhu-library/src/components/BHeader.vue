@@ -6,16 +6,21 @@
       <ul class="nav nav-pills">
         <li class="nav-item">
           <router-link to="/" class="nav-link" active-class="active" aria-current="page"
-            >Home (Week 5)</router-link
+            >Home</router-link
           >
         </li>
         <li class="nav-item">
-          <router-link to="/about" class="nav-link" active-class="active">About</router-link>
+          <router-link to="/Dashboard" class="nav-link" active-class="active"
+            >Dashboard</router-link
+          >
         </li>
         <li class="nav-item">
+          <router-link to="/Program" class="nav-link" active-class="active">Program</router-link>
+        </li>
+        <li class="nav-item" v-if="checkAuthentication == false">
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
         </li>
-        <li class="nav-item" v-if="isAuthenticated">
+        <li class="nav-item" v-else>
           <router-link to="/login" class="nav-link" active-class="active" @click="logout"
             >Logout</router-link
           >
@@ -25,23 +30,20 @@
   </div>
 </template>
 
-<script>
-import { ref } from 'vue'
+<script setup>
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 
-export default {
-  setup() {
-    const isAuthenticated = ref(localStorage.getItem('isAuthenticated'))
-    const router = useRouter()
+const checkAuthentication = computed(() => {
+  const authenticated = ref(localStorage.getItem('isAuthenticated'))
+  return authenticated.value === 'true'
+})
 
-    const logout = () => {
-      localStorage.removeItem('isAuthenticated')
-      isAuthenticated.value = false
-      router.push('/login')
-    }
+const router = useRouter()
 
-    return { isAuthenticated, logout }
-  }
+const logout = () => {
+  localStorage.removeItem('isAuthenticated')
+  router.push('/login')
 }
 </script>
 
