@@ -2,25 +2,25 @@
   <div class="login container">
     <h2 class="text-center">Login</h2>
     <form @submit.prevent="handleLogin">
-      <div class="row">
-        <div class="col sm-6">
+      <div class="row justify-content-center mb-1">
+        <div class="col-md-6 col-sm-6">
           <label for="email" class="form-label">Email:</label>
           <input type="text" v-model="email" id="email" class="form-control" />
         </div>
       </div>
-      <div class="row">
-        <div class="col sm-6">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-6">
           <label for="password" class="form-label">Password:</label>
           <input type="password" v-model="password" id="password" class="form-control" />
         </div>
       </div>
 
-      <div class="row submission">
-        <div class="col-md-6">
+      <div class="row justify-content-center mt-2">
+        <div class="col-12 col-md-3 d-flex justify-content-center justify-content-md-start">
           <button type="submit" class="btn btn-primary">Login</button>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-12 col-md-3 d-flex justify-content-center justify-content-md-end">
           <router-link to="/Registration" class="nav-link" active-class="active">
             Register here
           </router-link>
@@ -59,7 +59,6 @@ const handleLogin = () => {
 <style scoped>
 .container {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  max-width: 30%;
   margin: 0 auto;
   padding: 20px;
   /* background-color: #e0bfbf; */
@@ -70,9 +69,5 @@ const handleLogin = () => {
 .form {
   text-align: center;
   margin-top: 50px;
-}
-
-.submission{
-  margin-top: 10px;
 }
 </style>

@@ -13,7 +13,7 @@ const formData = ref({
 const submitForm = () => {
   validateEmail(true)
   validatePassword(true)
-  if (!errors.value.username && !errors.value.password) {
+  if (!errors.value.email && !errors.value.password) {
     var obj = {
       table: []
     }
@@ -44,7 +44,7 @@ const clearForm = () => {
 }
 
 const errors = ref({
-  username: null,
+  email: null,
   password: null,
   confirmPassword: '',
   resident: null,
@@ -53,10 +53,14 @@ const errors = ref({
 })
 
 const validateEmail = (blur) => {
-  if (formData.value.email.length < 3) {
-    if (blur) errors.value.username = 'Name must be at least 3 characters'
+  const email = formData.value.email
+  const hasAt = /[@]/.test(email)
+  const hasDot = /[.]/.test(email)
+
+  if (!hasAt || !hasDot) {
+    if (blur) errors.value.email = 'Must be a valid email'
   } else {
-    errors.value.username = null
+    errors.value.email = null
   }
 }
 
@@ -102,6 +106,7 @@ const validateConfirmPassword = (blur) => {
             <div class="col-md-6 col-sm-6">
               <label for="email" class="form-label">Email</label>
               <input
+                required
                 type="text"
                 class="form-control"
                 id="email"
@@ -109,17 +114,17 @@ const validateConfirmPassword = (blur) => {
                 @input="() => validateEmail(false)"
                 v-model="formData.email"
               />
-              <div v-if="errors.email" class="text-danger">{{ errors.username }}</div>
+              <div v-if="errors.email" class="text-danger">{{ errors.email }}</div>
             </div>
 
             <div class="col-md-6 col-sm-6">
               <label for="fullname" class="form-label">Full Name</label>
               <input
+                required
                 type="text"
                 class="form-control"
                 id="fullname"
                 v-model="formData.fullname"
-                required
               />
             </div>
           </div>
@@ -134,6 +139,7 @@ const validateConfirmPassword = (blur) => {
                 @blur="() => validatePassword(true)"
                 @input="() => validatePassword(false)"
                 v-model="formData.password"
+                required
               />
               <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
             </div>
@@ -146,6 +152,7 @@ const validateConfirmPassword = (blur) => {
                 id="confirm-password"
                 v-model="formData.confirmPassword"
                 @blur="() => validateConfirmPassword(true)"
+                required
               />
               <div v-if="errors.confirmPassword" class="text-danger">
                 {{ errors.confirmPassword }}
@@ -161,6 +168,7 @@ const validateConfirmPassword = (blur) => {
                 class="form-control"
                 id="contactNumber"
                 v-model="formData.contactNumber"
+                required
               />
             </div>
 
@@ -171,6 +179,7 @@ const validateConfirmPassword = (blur) => {
                 class="form-control"
                 id="institution"
                 v-model="formData.institution"
+                required
               />
             </div>
           </div>
