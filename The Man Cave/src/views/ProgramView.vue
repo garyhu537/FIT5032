@@ -9,7 +9,7 @@
             <div class="card-body">
               <h2 class="card-title">{{ program.programName }}</h2>
               <p class="card-text">{{ program.programDescription }}</p>
-              <p class="card-text">Average Rating: {{ calculateAverage(program.id) }}</p>
+              <p class="card-text">Average Rating: {{ findAverage(program.id) }}</p>
             </div>
             <div class="card-footer">
               <h3 class="card-title">Comments</h3>
@@ -36,7 +36,7 @@ const programs = computed(() => {
   return program
 })
 
-function calculateAverage(id) {
+function findAverage(id) {
   const targetProgram = computed(() => {
     return programsWithAverageRating.value.find(
       (programsWithAverageRating) => programsWithAverageRating.id === id

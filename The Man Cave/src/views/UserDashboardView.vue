@@ -1,3 +1,3 @@
 <template>
-  <p>Welcome User!</p>
+  <p class="text-center">Welcome User!</p>
 </template>

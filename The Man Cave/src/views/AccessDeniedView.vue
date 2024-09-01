@@ -1,8 +1,5 @@
 <template>
-    <h1>
+    <h1 class="text-center">
         Access Denied
     </h1>
-    <p>
-        Access Denied
-    </p>
 </template>

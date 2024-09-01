@@ -34,18 +34,15 @@
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 
-const isAuthenticated = ref(localStorage.getItem('isAuthenticated'))
-
 const checkAuthentication = computed(() => {
   const authenticated = ref(localStorage.getItem('isAuthenticated'))
-  return authenticated.value == 'true'
+  return authenticated.value === 'true'
 })
 
 const router = useRouter()
 
 const logout = () => {
   localStorage.removeItem('isAuthenticated')
-  isAuthenticated.value = false
   router.push('/login')
 }
 </script>
