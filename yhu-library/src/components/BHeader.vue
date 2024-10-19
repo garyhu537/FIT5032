@@ -44,7 +44,7 @@
 </template>
 
 <script setup>
-
+console.log('Hi')
 </script>
 
 <style scoped>
