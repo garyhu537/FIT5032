@@ -21,7 +21,8 @@ const signin = () => {
       console.log(auth.currentUser)
     })
     .catch((error) => {
-      console.log(error.code)
+      console.log('hi')
     })
 }
 </script>
+
